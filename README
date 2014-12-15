@@ -1,0 +1,7 @@
+Addons for Blender 2.67
+=======================
+Nellie Robinson (nellie-robinson)
+
+Terrain Generator
+-----------------
+Uses diamond-square algorithm to generate a fractal landscape based on customizable parameters.
