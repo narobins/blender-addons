@@ -2,6 +2,10 @@ Addons for Blender 2.67
 =======================
 Nellie Robinson (narobins)
 
+Installation
+------------
+Install files to scripts/addons folder within the Blender contents directory. Open Edit Preferences in Blender to enable the addons.
+
 Terrain Generator
 -----------------
 Uses diamond-square algorithm to generate a fractal landscape based on customizable parameters.
