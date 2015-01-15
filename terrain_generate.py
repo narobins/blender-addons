@@ -42,6 +42,7 @@ class TerrainGenerator(bpy.types.Operator):
 		max = 200.0,
 	)
 
+	# size of terrain	
 	size = FloatProperty(
 		name = "size",
 		default = 30,
@@ -50,17 +51,19 @@ class TerrainGenerator(bpy.types.Operator):
 		max = 100.0
 	)
 
+	# finish by triangulating quads
+	triangulate = BoolProperty(
+		name = "triangulate",
+		default = True
+	)
+
+	# corner altitudes
 	corner = FloatProperty(
 		name = "corner",
 		default = 0,
 		precision = 0,
 		min = -20.0,
 		max = 20.0
-	)
-
-	triangulate = BoolProperty(
-		name = "triangulate",
-		default = True
 	)
 
 	corner0 = corner + tuple()
