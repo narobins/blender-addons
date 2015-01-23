@@ -162,7 +162,7 @@ class TerrainGenerator(bpy.types.Operator):
 
 	# executes operator
 	def execute(self, context):
-		if self.auto_update != 0:
+		if bpy.context.selected_objects == [] or self.auto_update != 0:
 			self.make_terrain()
 			self.auto_update = False 
 			return {'FINISHED'}
