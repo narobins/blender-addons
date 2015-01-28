@@ -9,3 +9,7 @@ Install files to scripts/addons folder within the Blender contents directory. Op
 Terrain Generator
 -----------------
 Uses diamond-square algorithm to generate a fractal landscape based on customizable parameters.
+
+Tree Generator
+--------------
+Recursively builds tree based on customizable parameters. Work in progress.
