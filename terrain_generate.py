@@ -10,7 +10,7 @@ bl_info = {
 import bpy
 import bmesh
 from bpy.props import IntProperty, FloatProperty, BoolProperty
-from random import randint
+from random import randint, uniform
 from mathutils import Vector
 
 
@@ -42,7 +42,6 @@ class TerrainGenerator(bpy.types.Operator):
 		max = 200.0,
 	)
 
-	# size of terrain	
 	size = FloatProperty(
 		name = "size",
 		default = 30,
@@ -51,19 +50,17 @@ class TerrainGenerator(bpy.types.Operator):
 		max = 100.0
 	)
 
-	# finish by triangulating quads
-	triangulate = BoolProperty(
-		name = "triangulate",
-		default = True
-	)
-
-	# corner altitudes
 	corner = FloatProperty(
 		name = "corner",
 		default = 0,
 		precision = 0,
 		min = -20.0,
 		max = 20.0
+	)
+
+	triangulate = BoolProperty(
+		name = "triangulate",
+		default = True
 	)
 
 	corner0 = corner + tuple()
@@ -87,7 +84,7 @@ class TerrainGenerator(bpy.types.Operator):
 
 	# calculates noise
 	def calcError(self):
-		return randint(int(-self.rough), int(self.rough))
+		return uniform(-self.rough, self.rough);
 
 	# plots single point
 	def plot(self, x, y, z):
@@ -126,7 +123,7 @@ class TerrainGenerator(bpy.types.Operator):
 				for y in range(0, self.sideLength, side):
 					newZ = (self.getZ(x, y) + self.getZ(x + side, y) + 
 							self.getZ(x, y + side) + self.getZ(x + side, y + side)) / 4
-					self.setZ(x + half, y + half, newZ)
+					self.setZ(x + half, y + half, newZ + self.calcError())
 			# diamond:
 			for x in range(0, self.dim, half):
 				for y in range(int((x + half) % side), self.dim, side):
